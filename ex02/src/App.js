@@ -8,9 +8,15 @@ class App extends Component {
   }
 
   getMyStorage() {
-    const myCookieData = document.cookie.getItem("Year");
-    const myLocalStorageData = localStorage.getItem("Paragon");
-    const mySessionStorageData = sessionStorage.getItem("frontend")
+     const myCookieData = document.cookie.replace(
+       /(?:(?:^|.*;\s*)Year\s*=\s*([^;]*).*$)|^.*$/,
+       "$1"
+     );
+     const myLocalStorageData = localStorage.getItem("Paragon");
+     const mySessionStorageData = sessionStorage.getItem("frontend");
+     const arr = [];
+     arr.push(myCookieData, myLocalStorageData, mySessionStorageData);
+     return arr;
 
   }
   render() {
